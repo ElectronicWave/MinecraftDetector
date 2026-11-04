@@ -5,7 +5,7 @@ edition = "2024"
 
 
 [target.'cfg(windows)'.dependencies]
-wmi = "0.17.2"
+wmi = "0.18.0"
 
 
 # https://github.com/microsoft/edit/blob/main/Cargo.toml
