@@ -23,12 +23,11 @@ impl Display for ProcessInfo {
 pub fn query_process() -> Result<Vec<ProcessInfo>> {
     use std::collections::HashMap;
 
-    use wmi::{COMLibrary, Variant, WMIConnection, WMIError};
+    use wmi::{Variant, WMIConnection, WMIError};
 
     let err_conv = |err: WMIError| Error::new(ErrorKind::Other, err.to_string());
 
-    let com_con = COMLibrary::new().map_err(err_conv)?;
-    let wmi_con = WMIConnection::new(com_con).map_err(err_conv)?;
+    let wmi_con = WMIConnection::new().map_err(err_conv)?;
 
     let wmi_results: Vec<HashMap<String, Variant>> = wmi_con
         .raw_query(
